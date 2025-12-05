@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -32,17 +32,17 @@ Partial Class Form1
         Me.ButtonEdit = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBoxName = New System.Windows.Forms.TextBox()
+        Me.TextBoxSalary = New System.Windows.Forms.TextBox()
+        Me.TextBoxPosition = New System.Windows.Forms.TextBox()
+        Me.TextBoxDepartment = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.ButtonDeleteAll = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBoxHiddenID = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -80,9 +80,9 @@ Partial Class Form1
         'ButtonCreate
         '
         Me.ButtonCreate.BackColor = System.Drawing.Color.Blue
-        Me.ButtonCreate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonCreate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonCreate.ForeColor = System.Drawing.Color.White
-        Me.ButtonCreate.Location = New System.Drawing.Point(508, 241)
+        Me.ButtonCreate.Location = New System.Drawing.Point(509, 241)
         Me.ButtonCreate.Name = "ButtonCreate"
         Me.ButtonCreate.Size = New System.Drawing.Size(121, 27)
         Me.ButtonCreate.TabIndex = 3
@@ -92,9 +92,9 @@ Partial Class Form1
         'ButtonRead
         '
         Me.ButtonRead.BackColor = System.Drawing.Color.Blue
-        Me.ButtonRead.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonRead.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonRead.ForeColor = System.Drawing.Color.White
-        Me.ButtonRead.Location = New System.Drawing.Point(635, 241)
+        Me.ButtonRead.Location = New System.Drawing.Point(636, 241)
         Me.ButtonRead.Name = "ButtonRead"
         Me.ButtonRead.Size = New System.Drawing.Size(121, 27)
         Me.ButtonRead.TabIndex = 4
@@ -104,9 +104,9 @@ Partial Class Form1
         'ButtonUpdate
         '
         Me.ButtonUpdate.BackColor = System.Drawing.Color.Blue
-        Me.ButtonUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonUpdate.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonUpdate.ForeColor = System.Drawing.Color.White
-        Me.ButtonUpdate.Location = New System.Drawing.Point(635, 274)
+        Me.ButtonUpdate.Location = New System.Drawing.Point(636, 274)
         Me.ButtonUpdate.Name = "ButtonUpdate"
         Me.ButtonUpdate.Size = New System.Drawing.Size(121, 27)
         Me.ButtonUpdate.TabIndex = 5
@@ -116,21 +116,21 @@ Partial Class Form1
         'ButtonDelete
         '
         Me.ButtonDelete.BackColor = System.Drawing.Color.Blue
-        Me.ButtonDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonDelete.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonDelete.ForeColor = System.Drawing.Color.White
-        Me.ButtonDelete.Location = New System.Drawing.Point(508, 307)
+        Me.ButtonDelete.Location = New System.Drawing.Point(509, 307)
         Me.ButtonDelete.Name = "ButtonDelete"
         Me.ButtonDelete.Size = New System.Drawing.Size(121, 27)
         Me.ButtonDelete.TabIndex = 6
-        Me.ButtonDelete.Text = "Delete"
+        Me.ButtonDelete.Text = "🗑️ Delete"
         Me.ButtonDelete.UseVisualStyleBackColor = False
         '
         'ButtonEdit
         '
         Me.ButtonEdit.BackColor = System.Drawing.Color.Blue
-        Me.ButtonEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonEdit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonEdit.ForeColor = System.Drawing.Color.White
-        Me.ButtonEdit.Location = New System.Drawing.Point(508, 274)
+        Me.ButtonEdit.Location = New System.Drawing.Point(509, 274)
         Me.ButtonEdit.Name = "ButtonEdit"
         Me.ButtonEdit.Size = New System.Drawing.Size(121, 27)
         Me.ButtonEdit.TabIndex = 7
@@ -156,40 +156,33 @@ Partial Class Form1
         Me.Label3.TabIndex = 9
         Me.Label3.Text = "Employee Details"
         '
-        'TextBox1
+        'TextBoxName
         '
-        Me.TextBox1.Location = New System.Drawing.Point(573, 86)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(202, 20)
-        Me.TextBox1.TabIndex = 10
+        Me.TextBoxName.Location = New System.Drawing.Point(573, 86)
+        Me.TextBoxName.Name = "TextBoxName"
+        Me.TextBoxName.Size = New System.Drawing.Size(202, 20)
+        Me.TextBoxName.TabIndex = 10
         '
-        'TextBox2
+        'TextBoxSalary
         '
-        Me.TextBox2.Location = New System.Drawing.Point(573, 164)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(202, 20)
-        Me.TextBox2.TabIndex = 11
+        Me.TextBoxSalary.Location = New System.Drawing.Point(573, 149)
+        Me.TextBoxSalary.Name = "TextBoxSalary"
+        Me.TextBoxSalary.Size = New System.Drawing.Size(202, 20)
+        Me.TextBoxSalary.TabIndex = 11
         '
-        'TextBox3
+        'TextBoxPosition
         '
-        Me.TextBox3.Location = New System.Drawing.Point(573, 138)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(202, 20)
-        Me.TextBox3.TabIndex = 12
+        Me.TextBoxPosition.Location = New System.Drawing.Point(573, 123)
+        Me.TextBoxPosition.Name = "TextBoxPosition"
+        Me.TextBoxPosition.Size = New System.Drawing.Size(202, 20)
+        Me.TextBoxPosition.TabIndex = 12
         '
-        'TextBox4
+        'TextBoxDepartment
         '
-        Me.TextBox4.Location = New System.Drawing.Point(573, 112)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(202, 20)
-        Me.TextBox4.TabIndex = 13
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(573, 190)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(202, 20)
-        Me.TextBox5.TabIndex = 14
+        Me.TextBoxDepartment.Location = New System.Drawing.Point(573, 175)
+        Me.TextBoxDepartment.Name = "TextBoxDepartment"
+        Me.TextBoxDepartment.Size = New System.Drawing.Size(202, 20)
+        Me.TextBoxDepartment.TabIndex = 14
         '
         'Label4
         '
@@ -205,7 +198,7 @@ Partial Class Form1
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(485, 192)
+        Me.Label5.Location = New System.Drawing.Point(485, 177)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(78, 15)
         Me.Label5.TabIndex = 16
@@ -215,7 +208,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(516, 166)
+        Me.Label6.Location = New System.Drawing.Point(516, 151)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(47, 15)
         Me.Label6.TabIndex = 17
@@ -225,50 +218,58 @@ Partial Class Form1
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(504, 140)
+        Me.Label7.Location = New System.Drawing.Point(504, 125)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(59, 15)
         Me.Label7.TabIndex = 18
         Me.Label7.Text = "Position :"
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(537, 115)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(26, 15)
-        Me.Label8.TabIndex = 19
-        Me.Label8.Text = "ID :"
-        '
         'ButtonDeleteAll
         '
         Me.ButtonDeleteAll.BackColor = System.Drawing.Color.Blue
-        Me.ButtonDeleteAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonDeleteAll.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonDeleteAll.ForeColor = System.Drawing.Color.White
-        Me.ButtonDeleteAll.Location = New System.Drawing.Point(635, 307)
+        Me.ButtonDeleteAll.Location = New System.Drawing.Point(636, 307)
         Me.ButtonDeleteAll.Name = "ButtonDeleteAll"
         Me.ButtonDeleteAll.Size = New System.Drawing.Size(121, 27)
         Me.ButtonDeleteAll.TabIndex = 20
-        Me.ButtonDeleteAll.Text = "Delete All"
+        Me.ButtonDeleteAll.Text = "⚠ Delete All"
         Me.ButtonDeleteAll.UseVisualStyleBackColor = False
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(505, 215)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(170, 19)
+        Me.Label8.TabIndex = 21
+        Me.Label8.Text = "Employee Management"
+        '
+        'TextBoxHiddenID
+        '
+        Me.TextBoxHiddenID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBoxHiddenID.Location = New System.Drawing.Point(110, 199)
+        Me.TextBoxHiddenID.Name = "TextBoxHiddenID"
+        Me.TextBoxHiddenID.Size = New System.Drawing.Size(262, 20)
+        Me.TextBoxHiddenID.TabIndex = 22
+        Me.TextBoxHiddenID.Visible = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.ButtonDeleteAll)
         Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.ButtonDeleteAll)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox5)
-        Me.Controls.Add(Me.TextBox4)
-        Me.Controls.Add(Me.TextBox3)
-        Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TextBoxDepartment)
+        Me.Controls.Add(Me.TextBoxPosition)
+        Me.Controls.Add(Me.TextBoxSalary)
+        Me.Controls.Add(Me.TextBoxName)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ButtonEdit)
         Me.Controls.Add(Me.ButtonDelete)
@@ -279,6 +280,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TextBoxHiddenID)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -297,15 +299,15 @@ Partial Class Form1
     Friend WithEvents ButtonEdit As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents TextBox3 As TextBox
-    Friend WithEvents TextBox4 As TextBox
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TextBoxName As TextBox
+    Friend WithEvents TextBoxSalary As TextBox
+    Friend WithEvents TextBoxPosition As TextBox
+    Friend WithEvents TextBoxDepartment As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
     Friend WithEvents ButtonDeleteAll As Button
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TextBoxHiddenID As TextBox
 End Class
