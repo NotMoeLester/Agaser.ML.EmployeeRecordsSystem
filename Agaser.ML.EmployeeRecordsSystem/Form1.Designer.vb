@@ -43,6 +43,9 @@ Partial Class Form1
         Me.ButtonDeleteAll = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBoxHiddenID = New System.Windows.Forms.TextBox()
+        Me.TextBoxSearch = New System.Windows.Forms.TextBox()
+        Me.ComboBoxFilter = New System.Windows.Forms.ComboBox()
+        Me.ComboBoxSort = New System.Windows.Forms.ComboBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -272,12 +275,38 @@ Partial Class Form1
         Me.TextBoxHiddenID.TabIndex = 22
         Me.TextBoxHiddenID.Visible = False
         '
+        'TextBoxSearch
+        '
+        Me.TextBoxSearch.Location = New System.Drawing.Point(572, 12)
+        Me.TextBoxSearch.Name = "TextBoxSearch"
+        Me.TextBoxSearch.Size = New System.Drawing.Size(203, 20)
+        Me.TextBoxSearch.TabIndex = 23
+        '
+        'ComboBoxFilter
+        '
+        Me.ComboBoxFilter.FormattingEnabled = True
+        Me.ComboBoxFilter.Location = New System.Drawing.Point(223, 54)
+        Me.ComboBoxFilter.Name = "ComboBoxFilter"
+        Me.ComboBoxFilter.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBoxFilter.TabIndex = 24
+        '
+        'ComboBoxSort
+        '
+        Me.ComboBoxSort.FormattingEnabled = True
+        Me.ComboBoxSort.Location = New System.Drawing.Point(350, 55)
+        Me.ComboBoxSort.Name = "ComboBoxSort"
+        Me.ComboBoxSort.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBoxSort.TabIndex = 25
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.PeachPuff
         Me.ClientSize = New System.Drawing.Size(793, 365)
+        Me.Controls.Add(Me.ComboBoxSort)
+        Me.Controls.Add(Me.ComboBoxFilter)
+        Me.Controls.Add(Me.TextBoxSearch)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.ButtonDeleteAll)
         Me.Controls.Add(Me.Label7)
@@ -330,4 +359,7 @@ Partial Class Form1
     Friend WithEvents ButtonDeleteAll As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents TextBoxHiddenID As TextBox
+    Friend WithEvents TextBoxSearch As TextBox
+    Friend WithEvents ComboBoxFilter As ComboBox
+    Friend WithEvents ComboBoxSort As ComboBox
 End Class

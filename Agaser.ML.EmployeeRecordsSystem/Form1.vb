@@ -1,7 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class Form1
-
     Dim conn As MySqlConnection
     Dim COMMAND As MySqlCommand
 
@@ -164,33 +163,6 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub RefreshGrid()
-        Dim query As String = "SELECT ID, Name, Position, Salary, Department FROM `employee list` WHERE is_Deleted='0'"
-
-        Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
-            Dim adapter As New MySqlDataAdapter(query, conn)
-            Dim table As New DataTable()
-            adapter.Fill(table)
-            DataGridView1.DataSource = table
-
-            If DataGridView1.Columns.Contains("ID") Then
-                DataGridView1.Columns("ID").Visible = False
-            End If
-        End Using
-    End Sub
-
-    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
-        If e.RowIndex >= 0 Then
-            Dim selectedRow As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
-
-            TextBoxName.Text = selectedRow.Cells("Name").Value.ToString()
-            TextBoxPosition.Text = selectedRow.Cells("Position").Value.ToString()
-            TextBoxSalary.Text = selectedRow.Cells("Salary").Value.ToString()
-            TextBoxDepartment.Text = selectedRow.Cells("Department").Value.ToString()
-            TextBoxHiddenID.Text = selectedRow.Cells("ID").Value.ToString()
-        End If
-    End Sub
-
     Private Sub ButtonDeleteAll_Click(sender As Object, e As EventArgs) Handles ButtonDeleteAll.Click
         Dim confirm As DialogResult = MessageBox.Show("Are you sure you want to delete all records?", "Confirm Delete All", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
         If confirm <> DialogResult.Yes Then
@@ -218,9 +190,124 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub RefreshGrid()
+        Dim baseQuery As String = "SELECT ID, Name, Position, Salary, Department FROM `employee list` WHERE is_Deleted='0'"
 
+        Dim searchText As String = TextBoxSearch.Text.Trim()
+        Dim filterText As String = ComboBoxFilter.Text
+        Dim sortText As String = ComboBoxSort.Text
+
+        Dim query As String = baseQuery
+
+        If searchText <> "" Then
+            query &= " AND (Name LIKE '%" & searchText & "%' OR ID LIKE '%" & searchText & "%')"
+        End If
+
+        If filterText = "Salary Greater Than 50000" Then
+            query &= " AND Salary > 50000"
+        End If
+
+        If sortText = "Name Ascending" Then
+            query &= " ORDER BY Name ASC"
+        End If
+
+        If sortText = "Name Descending" Then
+            query &= " ORDER BY Name DESC"
+        End If
+
+        If sortText = "Salary Ascending" Then
+            query &= " ORDER BY Salary ASC"
+        End If
+
+        If sortText = "Salary Descending" Then
+            query &= " ORDER BY Salary DESC"
+        End If
+
+        Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
+            Dim adapter As New MySqlDataAdapter(query, conn)
+            Dim table As New DataTable()
+            adapter.Fill(table)
+            DataGridView1.DataSource = table
+
+            If DataGridView1.Columns.Contains("ID") Then
+                DataGridView1.Columns("ID").Visible = False
+            End If
+        End Using
     End Sub
 
+    Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim selectedRow As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
 
+            TextBoxName.Text = selectedRow.Cells("Name").Value.ToString()
+            TextBoxPosition.Text = selectedRow.Cells("Position").Value.ToString()
+            TextBoxSalary.Text = selectedRow.Cells("Salary").Value.ToString()
+            TextBoxDepartment.Text = selectedRow.Cells("Department").Value.ToString()
+            TextBoxHiddenID.Text = selectedRow.Cells("ID").Value.ToString()
+        End If
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ComboBoxFilter.Items.Clear()
+        ComboBoxFilter.Items.Add("Show All")
+        ComboBoxFilter.Items.Add("Salary Less Than or Equal to 50000")
+        ComboBoxFilter.Items.Add("Salary Greater Than 50000")
+        ComboBoxFilter.SelectedIndex = 0
+
+        ComboBoxSort.Items.Clear()
+        ComboBoxSort.Items.Add("None")
+        ComboBoxSort.Items.Add("Name Ascending")
+        ComboBoxSort.Items.Add("Name Descending")
+        ComboBoxSort.Items.Add("Salary Ascending")
+        ComboBoxSort.Items.Add("Salary Descending")
+        ComboBoxSort.SelectedIndex = 0
+
+        AddHandler TextBoxSearch.TextChanged, AddressOf SearchChanged
+        AddHandler ComboBoxFilter.SelectedIndexChanged, AddressOf SearchChanged
+        AddHandler ComboBoxSort.SelectedIndexChanged, AddressOf SearchChanged
+
+        RefreshGrid()
+    End Sub
+
+    Private Sub SearchChanged(sender As Object, e As EventArgs)
+        RefreshGrid()
+    End Sub
+
+    Private Sub DataGridView1_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellEndEdit
+        If e.RowIndex < 0 Then Return
+
+        Dim row As DataGridViewRow = DataGridView1.Rows(e.RowIndex)
+        Dim id As Integer = CInt(row.Cells("ID").Value)
+
+        Dim columnName As String = DataGridView1.Columns(e.ColumnIndex).Name
+        Dim newValue As String = row.Cells(e.ColumnIndex).Value.ToString()
+
+        If columnName = "Salary" Then
+            Dim salaryVal As Integer
+            If Not Integer.TryParse(newValue, salaryVal) Then
+                MessageBox.Show("Salary must be a number")
+                RefreshGrid()
+                Return
+            End If
+        End If
+
+        Dim query As String = "UPDATE `employee list` SET " & columnName & " = @value WHERE ID = @id"
+
+        Try
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
+                conn.Open()
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@value", newValue)
+                    cmd.Parameters.AddWithValue("@id", id)
+                    cmd.ExecuteNonQuery()
+                End Using
+            End Using
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ComboBoxSort_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBoxSort.SelectedIndexChanged
+
+    End Sub
 End Class
