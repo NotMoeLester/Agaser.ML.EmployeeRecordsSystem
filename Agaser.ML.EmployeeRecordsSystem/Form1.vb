@@ -1,5 +1,4 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports Mysqlx.Crud
 
 Public Class Form1
 
@@ -7,7 +6,7 @@ Public Class Form1
     Dim COMMAND As MySqlCommand
 
     Private Sub ButtonCreate_Click(sender As Object, e As EventArgs) Handles ButtonCreate.Click
-        Dim query As String = "INSERT INTO `employee list` (Name, Position, Salary, Department) VALUES (@Name, @Position, @Salary, @Department)"
+        Dim query As String = "INSERT INTO `employee list` (Name, Position, Salary, Department, is_Deleted) VALUES (@Name, @Position, @Salary, @Department, '0')"
 
         Try
             Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
@@ -56,7 +55,7 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonRead_Click(sender As Object, e As EventArgs) Handles ButtonRead.Click
-        Dim query As String = "SELECT ID, Name, Position, Salary, Department FROM `employee list`"
+        Dim query As String = "SELECT ID, Name, Position, Salary, Department FROM `employee list` WHERE is_Deleted='0'"
 
         Try
             Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
@@ -94,6 +93,13 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonUpdate_Click(sender As Object, e As EventArgs) Handles ButtonUpdate.Click
+        DataGridView1.EndEdit()
+
+        If Not Integer.TryParse(TextBoxSalary.Text, Nothing) Then
+            MessageBox.Show("Salary must be an Number")
+            Return
+        End If
+
         If TextBoxHiddenID.Text = "" Then
             MessageBox.Show("Select a record")
             Return
@@ -112,6 +118,7 @@ Public Class Form1
                     cmd.Parameters.AddWithValue("@Department", TextBoxDepartment.Text)
 
                     cmd.ExecuteNonQuery()
+                    RefreshGrid()
                     MessageBox.Show("Record Updated")
                 End Using
             End Using
@@ -133,7 +140,7 @@ Public Class Form1
             Return
         End If
 
-        Dim query As String = "DELETE FROM `employee list` WHERE ID = @ID"
+        Dim query As String = "UPDATE `employee list` SET is_Deleted='1' WHERE ID=@ID"
         Try
             Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
                 conn.Open()
@@ -143,7 +150,7 @@ Public Class Form1
                 End Using
             End Using
 
-            MessageBox.Show("Record deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Record deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             RefreshGrid()
             TextBoxName.Clear()
@@ -158,7 +165,7 @@ Public Class Form1
     End Sub
 
     Private Sub RefreshGrid()
-        Dim query As String = "SELECT ID, Name, Position, Salary, Department FROM `employee list`"
+        Dim query As String = "SELECT ID, Name, Position, Salary, Department FROM `employee list` WHERE is_Deleted='0'"
 
         Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
             Dim adapter As New MySqlDataAdapter(query, conn)
@@ -190,7 +197,7 @@ Public Class Form1
             Return
         End If
 
-        Dim query As String = "DELETE FROM `employee list`"
+        Dim query As String = "UPDATE `employee list` SET is_Deleted='1'"
         Try
             Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=employeemanagementsystem")
                 conn.Open()
@@ -199,7 +206,7 @@ Public Class Form1
                 End Using
             End Using
 
-            MessageBox.Show("All records deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("All records marked as deleted", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information)
             RefreshGrid()
             TextBoxName.Clear()
             TextBoxPosition.Clear()
@@ -210,4 +217,10 @@ Public Class Form1
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+
 End Class
